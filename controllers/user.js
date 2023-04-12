@@ -1,5 +1,6 @@
 const { Error } = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const STATUS = require('../utils/constants/status');
 const BadRequest = require('../utils/errors/badRequest');
@@ -27,5 +28,22 @@ module.exports.createUser = (req, res, next) => {
       delete userObj.password;
       res.status(201).send(userObj);
     })
-    .catch
+    .catch((err) => {
+      if (err instanceof Error.ValidationError) {
+        next(new BadRequest(STATUS.INVALID_USER));
+      } if (err.code === 11000) {
+        next(new Conflict(STATUS.CONFLICT_EMAIL));
+      } else {
+        next(err);
+      }
+    });
+};
+
+module.exports.loginUser = (req, res, next) => {
+  const { email, password } = req.body;
+
+  return User.findUserByCredentials(email, password)
+    .then((user) => {
+
+    })
 };

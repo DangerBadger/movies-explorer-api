@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const limiter = require('./utils/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT, MOVIES_EXPLORER_CONNECT } = require('./config');
+const routes = require('./routes');
 const errorHendler = require('./middlewares/errorHandler');
 
 // Подключение express
@@ -29,6 +30,9 @@ app.use(cookieParser());
 
 // Логгер запросов
 app.use(requestLogger);
+
+// Направление по всем рутам
+app.use(routes);
 
 // Логгер ошибок
 app.use(errorLogger);
