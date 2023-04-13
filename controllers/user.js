@@ -6,12 +6,40 @@ const User = require('../models/user');
 const STATUS = require('../utils/constants/status');
 const BadRequest = require('../utils/errors/badRequest');
 const Conflict = require('../utils/errors/conflict');
+const NotFound = require('../utils/errors/notFound');
 
 const { NODE_ENV } = process.env;
 
-// module.exports.getUserInfo = (req, res) => {
-//   User.findById(req.user._id)
-// };
+module.exports.getUserInfo = (req, res, next) => {
+  User.findById(req.user._id)
+    .then((user) => {
+      if (!user) {
+        throw new NotFound(STATUS.USER_NOT_FOUND);
+      }
+      res.send(user);
+    })
+    .catch(next);
+};
+
+module.exports.updateUser = (req, res, next) => {
+  const { email, name } = req.body;
+  const { _id } = req.user;
+
+  User.findByIdAndUpdate(_id, { email, name }, { new: true, runValidators: true })
+    .then((user) => {
+      if (!user) {
+        throw new NotFound(STATUS.USER_NOT_FOUND);
+      }
+      return res.send(user);
+    })
+    .catch((err) => {
+      if (err instanceof Error.ValidationError) {
+        next(new BadRequest(STATUS.INVALID_INFO_UPDATE));
+      } else {
+        next(err);
+      }
+    });
+};
 
 module.exports.createUser = (req, res, next) => {
   const {
