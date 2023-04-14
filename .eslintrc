@@ -3,6 +3,7 @@
   "rules": {
     "no-unused-vars": "warn",
     "consistent-return": "warn",
+    "no-useless-escape": "warn",
     "no-underscore-dangle": [
       "error",
       { "allow": ["_id"] }

@@ -5,6 +5,7 @@ const STATUS = {
   UNAUTHORIZED_MAIL_PASSWORD: 'Неправильные почта или пароль',
   UNAUTHORIZED_USER: 'Необходима авторизация',
   USER_NOT_FOUND: 'Пользователь по указанному _id не найден',
+  INVALID_MOVIE_CREATE: 'Переданы некорректные данные при создании карточки фильма',
 };
 
 module.exports = STATUS;

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const { errors } = require('celebrate');
 const limiter = require('./utils/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT, MOVIES_EXPLORER_CONNECT } = require('./config');
@@ -36,6 +37,9 @@ app.use(routes);
 
 // Логгер ошибок
 app.use(errorLogger);
+
+// Обработчик ошибок celebrate
+app.use(errors());
 
 // Централизованный обработчик ошибок
 app.use(errorHendler);
