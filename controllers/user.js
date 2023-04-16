@@ -87,3 +87,12 @@ module.exports.loginUser = (req, res, next) => {
     })
     .catch(next);
 };
+
+module.exports.signOut = async (req, res, next) => {
+  try {
+    res.clearCookie('jwt')
+      .send({ message: 'Токен удалён' });
+  } catch (err) {
+    next(err);
+  }
+};

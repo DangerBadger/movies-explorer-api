@@ -14,7 +14,6 @@ router.use('/movies', auth, moviesRoutes);
 // Публчиные пути
 router.use('/signup', signupRoutes);
 router.use('/signin', signinRoutes);
-// signout!
 
 // Обработка любого несуществующего рута
 router.use('*', (req, res, next) => next(new NotFound(STATUS.NOT_FOUND)));

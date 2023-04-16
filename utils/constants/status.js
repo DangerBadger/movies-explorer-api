@@ -6,6 +6,9 @@ const STATUS = {
   UNAUTHORIZED_USER: 'Необходима авторизация',
   USER_NOT_FOUND: 'Пользователь по указанному _id не найден',
   INVALID_MOVIE_CREATE: 'Переданы некорректные данные при создании карточки фильма',
+  MOVIE_NOT_FOUND: 'Фильм с указанным _id не найден',
+  FORBIDDEN_CARD: 'У вас нет прав для удаления этого фильма',
+  BAD_REQUEST: 'Передан неверный запрос',
 };
 
 module.exports = STATUS;
