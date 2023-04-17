@@ -4,9 +4,9 @@ const STATUS = {
   NOT_FOUND: 'Запрашиваемый ресурс не найден',
   UNAUTHORIZED_MAIL_PASSWORD: 'Неправильные почта или пароль',
   UNAUTHORIZED_USER: 'Необходима авторизация',
-  USER_NOT_FOUND: 'Пользователь по указанному _id не найден',
+  USER_NOT_FOUND: 'Пользователь по указанному id не найден',
   INVALID_MOVIE_CREATE: 'Переданы некорректные данные при создании карточки фильма',
-  MOVIE_NOT_FOUND: 'Фильм с указанным _id не найден',
+  MOVIE_NOT_FOUND: 'Фильм с указанным id не найден',
   FORBIDDEN_CARD: 'У вас нет прав для удаления этого фильма',
   BAD_REQUEST: 'Передан неверный запрос',
 };
