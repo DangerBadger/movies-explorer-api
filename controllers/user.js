@@ -35,6 +35,8 @@ module.exports.updateUser = (req, res, next) => {
     .catch((err) => {
       if (err instanceof Error.ValidationError) {
         next(new BadRequest(STATUS.INVALID_INFO_UPDATE));
+      } if (err.code === 11000) {
+        next(new Conflict(STATUS.CONFLICT_EMAIL));
       } else {
         next(err);
       }

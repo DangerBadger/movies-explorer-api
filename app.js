@@ -6,6 +6,7 @@ const { errors } = require('celebrate');
 const limiter = require('./utils/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT, MOVIES_EXPLORER_CONNECT } = require('./config');
+const cors = require('./middlewares/cors');
 const routes = require('./routes');
 const errorHendler = require('./middlewares/errorHandler');
 
@@ -31,6 +32,9 @@ app.use(cookieParser());
 
 // Логгер запросов
 app.use(requestLogger);
+
+// Обработка кросс-доменных запросов
+app.use(cors);
 
 // Направление по всем рутам
 app.use(routes);
