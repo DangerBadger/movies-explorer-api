@@ -9,6 +9,8 @@ const STATUS = {
   MOVIE_NOT_FOUND: 'Фильм с указанным id не найден',
   FORBIDDEN_CARD: 'У вас нет прав для удаления этого фильма',
   BAD_REQUEST: 'Передан неверный запрос',
+  INVALID_INFO_UPDATE: 'Переданы некорректные данные при обновлении профиля',
+  DEFAULT_ERROR: 'На сервере произошла ошибка',
 };
 
 module.exports = STATUS;

@@ -1,6 +1,7 @@
 const { Error } = require('mongoose');
 const Movie = require('../models/movie');
 const STATUS = require('../utils/constants/status');
+const MESSAGES = require('../utils/constants/messages');
 const BadRequest = require('../utils/errors/badRequest');
 const NotFound = require('../utils/errors/notFound');
 const Forbidden = require('../utils/errors/forbidden');
@@ -45,7 +46,7 @@ module.exports.deleteMovie = (req, res, next) => {
       }
       return Movie.deleteOne({ _id: movieId })
         .then(() => {
-          res.send({ message: 'Фильм удалён' });
+          res.send({ message: MESSAGES.MOVIE_DELETED });
         });
     })
     .catch((err) => {

@@ -16,9 +16,6 @@ const app = express();
 // Коннект БД по значению переменной окружения
 mongoose.connect(MOVIES_EXPLORER_CONNECT);
 
-// Ограничение на количество запросов
-app.use(limiter);
-
 // Автоматическая простановка заголовков безопасности
 app.use(helmet());
 
@@ -32,6 +29,9 @@ app.use(cookieParser());
 
 // Логгер запросов
 app.use(requestLogger);
+
+// Ограничение на количество запросов
+app.use(limiter);
 
 // Обработка кросс-доменных запросов
 app.use(cors);

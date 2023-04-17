@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config');
 const User = require('../models/user');
 const STATUS = require('../utils/constants/status');
+const MESSAGES = require('../utils/constants/messages');
 const BadRequest = require('../utils/errors/badRequest');
 const Conflict = require('../utils/errors/conflict');
 const NotFound = require('../utils/errors/notFound');
@@ -93,7 +94,7 @@ module.exports.loginUser = (req, res, next) => {
 module.exports.signOut = async (req, res, next) => {
   try {
     res.clearCookie('jwt')
-      .send({ message: 'Токен удалён' });
+      .send({ message: MESSAGES.TOKEN_DELETED });
   } catch (err) {
     next(err);
   }
